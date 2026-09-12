@@ -1,0 +1,44 @@
+{
+  "name": "jobos",
+  "version": "2.0.0",
+  "description": "JobOS — Local-First Autonomous AI Job-Search Command Center",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node --check server.js server/index.js js/app.js js/store.js js/views/*.js",
+    "test": "node --test --test-concurrency=1 server/tests/unit/*.test.js server/tests/e2e/*.test.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@google/genai": "^2.22.0",
+    "clsx": "^2.1.1",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "lucide-react": "^0.475.0",
+    "motion": "^13.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.7.0",
+    "react-use-measure": "^2.1.7",
+    "tailwind-merge": "^3.0.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "tailwindcss": "^4.0.6",
+    "typescript": "^5.7.3"
+  },
+  "keywords": [
+    "job-search",
+    "autonomous-agents",
+    "command-center",
+    "sqlite",
+    "ai-agents"
+  ],
+  "author": "JobOS Team",
+  "license": "MIT"
+}

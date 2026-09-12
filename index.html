@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobOS — Autonomous AI Career Command Center</title>
+  
+  <!-- App Favicon & Manifest Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.svg">
+  
+  <!-- Modern Typography: Instrument Serif, Plus Jakarta Sans, Manrope & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Three.js 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r125/three.min.js"></script>
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/office.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <div id="app-root">
+    
+    <!-- Flyout Navigation Overlay Backdrop -->
+    <div id="sidebar-overlay" onclick="window.app.closeSidebar()"></div>
+
+    <!-- ====================================================================
+         1. Left Navigation Sidebar (Flyout Drawer)
+         ==================================================================== -->
+    <aside id="sidebar">
+      
+      <!-- Brand Header & Close Button -->
+      <div class="sidebar-header">
+        <a href="/launch.html" class="brand-logo-lockup" title="JobOS Launch Station">
+          <div class="brand-icon">J</div>
+          <div class="brand-title">
+            <span>JobOS</span>
+            <span class="brand-badge">AGENT HQ</span>
+          </div>
+        </a>
+        <button class="btn btn-ghost btn-sm" onclick="window.app.closeSidebar()" title="Close Navigation (Esc)" style="font-size: 16px; padding: 4px 8px; border-radius: 6px; color: var(--text-muted);">✕</button>
+      </div>
+
+      <!-- Navigation Links (11 Primary Destinations) -->
+      <ul class="sidebar-nav-list">
+        
+        <div class="nav-section-label">Operations</div>
+        
+        <li>
+          <button class="nav-item-btn active" data-view="dashboard" onclick="window.location.hash='#dashboard'; window.app.closeSidebar();">
+            <div class="item-content">
+              <span class="nav-icon">📊</span>
+              <span>Dashboard</span>
+            </div>
+            <span class="nav-counter attention">2</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="office" onclick="window.location.hash='#office'">
+            <div class="item-content">
+              <span class="nav-icon">🏢</span>
+              <span>Virtual Office</span>
+            </div>
+            <span class="nav-counter" style="color: var(--brand-emerald);">7 Pups</span>
+          </button>
+        </li>
+
+        <div class="nav-section-label" style="margin-top: 6px;">Discovery & Pipeline</div>
+
+        <li>
+          <button class="nav-item-btn" data-view="jobs" onclick="window.location.hash='#jobs'">
+            <div class="item-content">
+              <span class="nav-icon">🔍</span>
+              <span>Job Discovery</span>
+            </div>
+            <span class="nav-counter">18</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="tracker" onclick="window.location.hash='#tracker'">
+            <div class="item-content">
+              <span class="nav-icon">📋</span>
+              <span>Applications</span>
+            </div>
+            <span class="nav-counter">14</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="interviews" onclick="window.location.hash='#interviews'">
+            <div class="item-content">
+              <span class="nav-icon">📅</span>
+              <span>Interviews</span>
+            </div>
+            <span class="nav-counter" style="color: var(--brand-amber);">3</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="timeline" onclick="window.location.hash='#timeline'">
+            <div class="item-content">
+              <span class="nav-icon">⏱️</span>
+              <span>Timeline / Audit</span>
+            </div>
+          </button>
+        </li>
+
+        <div class="nav-section-label" style="margin-top: 6px;">Candidate Intelligence</div>
+
+        <li>
+          <button class="nav-item-btn" data-view="profile" onclick="window.location.hash='#profile'">
+            <div class="item-content">
+              <span class="nav-icon">👤</span>
+              <span>Candidate Profile</span>
+            </div>
+            <span class="badge-audit verified" style="font-size: 9px; padding: 1px 5px;">100%</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="upskill" onclick="window.location.hash='#upskill'">
+            <div class="item-content">
+              <span class="nav-icon">📈</span>
+              <span>Upskill & Career</span>
+            </div>
+            <span class="nav-counter" style="color: var(--brand-sky);">Top Gaps</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="missions" onclick="window.location.hash='#missions'">
+            <div class="item-content">
+              <span class="nav-icon">🎯</span>
+              <span>Missions</span>
+            </div>
+            <span class="nav-counter">2 Active</span>
+          </button>
+        </li>
+
+        <div class="nav-section-label" style="margin-top: 6px;">Communication & Reports</div>
+
+        <li>
+          <button class="nav-item-btn" data-view="email-sync" onclick="window.location.hash='#email-sync'">
+            <div class="item-content">
+              <span class="nav-icon">📬</span>
+              <span>Email & Signals</span>
+            </div>
+            <span class="nav-counter attention">1 Action</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="reports" onclick="window.location.hash='#reports'">
+            <div class="item-content">
+              <span class="nav-icon">📊</span>
+              <span>Pipeline Reports</span>
+            </div>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="templates" onclick="window.location.hash='#templates'">
+            <div class="item-content">
+              <span class="nav-icon">📝</span>
+              <span>Doc Templates</span>
+            </div>
+          </button>
+        </li>
+
+        <div class="nav-section-label" style="margin-top: 6px;">System</div>
+
+        <li>
+          <button class="nav-item-btn" data-view="ai-usage" onclick="window.location.hash='#ai-usage'">
+            <div class="item-content">
+              <span class="nav-icon">⚡</span>
+              <span>AI Usage & Tokens</span>
+            </div>
+            <span class="nav-counter" id="nav-ai-status" style="color: var(--brand-emerald);">Active</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="settings" onclick="window.location.hash='#settings'">
+            <div class="item-content">
+              <span class="nav-icon">⚙️</span>
+              <span>Settings & Security</span>
+            </div>
+          </button>
+        </li>
+
+        <li>
+          <button class="nav-item-btn" data-view="diagnostics" onclick="window.location.hash='#diagnostics'">
+            <div class="item-content">
+              <span class="nav-icon">🔬</span>
+              <span>Diagnostics</span>
+            </div>
+            <span class="nav-counter" id="nav-health-status" style="color: var(--brand-emerald);">Healthy</span>
+          </button>
+        </li>
+
+      </ul>
+
+      <!-- User Verified Profile Status Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-profile-card">
+          <div class="profile-avatar">B</div>
+          <div class="profile-meta">
+            <div class="profile-name">Balaji S.</div>
+            <div class="profile-status">
+              <span class="status-dot"></span>
+              <span>Verified Single Truth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ====================================================================
+         2. Main Workstation Viewport & Operational Command Bar
+         ==================================================================== -->
+    <main id="main-viewport">
+      
+      <!-- Top Operational Bar -->
+      <header id="topbar">
+        
+        <div class="topbar-left">
+          <!-- Hamburger Menu Toggle Button -->
+          <button id="hamburger-btn" class="btn-hamburger" onclick="window.app.toggleSidebar()" title="Open Navigation Menu (⌘M / Alt+M)">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+
+          <!-- Topbar Brand Lockup (Visible when Sidebar is Flyout) -->
+          <a href="/launch.html" class="brand-logo-lockup" title="JobOS Launch Station" style="margin-right: 6px;">
+            <div class="brand-icon">J</div>
+            <div class="brand-title">
+              <span>JobOS</span>
+              <span class="brand-badge">AGENT HQ</span>
+            </div>
+          </a>
+
+          <div class="active-mission-pill">
+            <span class="mission-indicator"></span>
+            <span>Mission: <strong>Senior Backend India</strong></span>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="global-search-bar">
+            <span>🔍</span>
+            <input type="text" placeholder="Search jobs, requirements, verified facts, or agent tasks..." />
+            <span class="search-shortcut-hint">⌘K</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          
+          <!-- Live Health Status Indicator -->
+          <a href="#diagnostics" id="topbar-health-pill" class="btn-theme-toggle" style="text-decoration: none; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08); color: var(--brand-emerald);" title="System Health: All Subsystems Operational">
+            <span style="display:inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-emerald); box-shadow: 0 0 6px var(--brand-emerald);"></span>
+            <span id="topbar-health-text" style="font-size: 11px; font-weight: 700;">HEALTHY</span>
+          </a>
+
+          <!-- Launch Station Link -->
+          <a href="/launch.html" class="btn-theme-toggle" style="text-decoration: none;" title="Cinematic Launch Station">
+            <span>🚀</span>
+            <span>Launch</span>
+          </a>
+
+          <!-- Theme Switcher -->
+          <button class="btn-theme-toggle" id="theme-toggle-btn" onclick="window.app.toggleTheme()" title="Switch between Daylight Studio and Obsidian Night (Shift+D)">
+            <span id="theme-icon">☀️</span>
+            <span id="theme-label">Daylight</span>
+          </button>
+
+          <!-- Live Agent Ticker -->
+          <div class="agent-live-ticker" title="7 Autonomous agents active on office floor">
+            <span>Agents Online:</span>
+            <div class="agent-ticker-avatars">
+              <span class="ticker-pup-dot working" title="Orchestrator: Working">🐶</span>
+              <span class="ticker-pup-dot working" title="Scout: Crawling">🐕</span>
+              <span class="ticker-pup-dot" title="Intelligence: Thinking">🐩</span>
+              <span class="ticker-pup-dot working" title="Application: Drafting">🐕‍🦺</span>
+            </div>
+          </div>
+
+          <!-- Emergency Pause -->
+          <button class="btn-emergency-pause" onclick="window.app.triggerEmergencyPause()" title="Pause all autonomous crawlers and form auto-fills">
+            <span>⏸️</span>
+            <span>Pause Office</span>
+          </button>
+
+        </div>
+
+      </header>
+
+      <!-- Router Content Target Container -->
+      <div id="view-container">
+        <!-- Injected via js/app.js -->
+      </div>
+
+    </main>
+
+    <!-- ====================================================================
+         3. Right Drawer Inspector (Agent Detail & Quick View)
+         ==================================================================== -->
+    <div id="drawer-overlay" onclick="window.app.closeDrawer()"></div>
+    
+    <aside id="inspector-drawer">
+      <div class="drawer-header">
+        <div class="drawer-title-lockup">
+          <div>
+            <h3 id="drawer-title" style="font-size: var(--text-base); font-weight: 700;">Agent Inspector</h3>
+            <div id="drawer-subtitle" style="font-size: var(--text-xs); color: var(--text-secondary);">Telemetry & Logs</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="window.app.closeDrawer()">✕</button>
+      </div>
+
+      <div class="drawer-body" id="drawer-content">
+        <!-- Injected dynamically -->
+      </div>
+
+      <div class="drawer-footer">
+        <button class="btn btn-secondary btn-sm" onclick="window.app.closeDrawer()">Close Inspector</button>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         4. Global Modal Dialog System
+         ==================================================================== -->
+    <div id="modal-backdrop">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3 id="modal-title" style="font-size: var(--text-lg); font-weight: 700;">Modal Dialog</h3>
+          <button class="btn btn-ghost btn-sm" onclick="window.app.closeModal()">✕</button>
+        </div>
+        <div class="modal-body" id="modal-body-container">
+          <!-- Injected dynamically -->
+        </div>
+        <div class="modal-footer" id="modal-footer-container">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         5. Floating Toast Notification Dock
+         ==================================================================== -->
+    <div id="toast-dock"></div>
+
+  </div>
+
+  <!-- Main JavaScript App Entrypoint -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

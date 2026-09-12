@@ -1,0 +1,553 @@
+/* ==========================================================================
+   JobOS Virtual Office (office.css) — Recreated via Attached Design
+   Level 4 Executive Desk Pod • 7 Deterministic AI Agents under Human Gate
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Office Header & Ambient Workspace Canvas
+   -------------------------------------------------------------------------- */
+.office-workspace-canvas {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--bg-surface-0);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--border-subtle);
+}
+
+.office-workspace-canvas .ambient-glow-1 {
+  pointer-events: none;
+  position: absolute;
+  top: -6rem;
+  right: -6rem;
+  height: 24rem;
+  width: 24rem;
+  border-radius: 50%;
+  background: var(--brand-amber-dim);
+  filter: blur(48px);
+}
+
+.office-workspace-canvas .ambient-glow-2 {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 33%;
+  height: 16rem;
+  width: 20rem;
+  border-radius: 50%;
+  background: var(--brand-emerald-dim);
+  filter: blur(48px);
+}
+
+.office-telemetry-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-bottom: var(--space-3);
+}
+
+@media (min-width: 1024px) {
+  .office-telemetry-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.telemetry-status-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.telemetry-live-dot {
+  display: inline-flex;
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  background-color: var(--brand-emerald);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.office-title-text {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.office-subtitle-text {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Quick View Switcher & Filter Chips
+   -------------------------------------------------------------------------- */
+.view-switcher-group {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-surface-2);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  gap: 2px;
+}
+
+.view-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.view-switcher-btn:hover {
+  color: var(--text-primary);
+}
+
+.view-switcher-btn.active {
+  background-color: var(--bg-surface-1);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-chips-row {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface-2);
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-chip:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+.filter-chip.active {
+  background-color: var(--brand-amber);
+  color: #1a1505;
+  border-color: var(--brand-amber);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --------------------------------------------------------------------------
+   3D Virtual Office Viewport (Three.js Stage)
+   -------------------------------------------------------------------------- */
+.threejs-viewport-container {
+  position: relative;
+  width: 100%;
+  height: 580px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: #070a12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  margin-bottom: var(--space-6);
+}
+
+#threejs-canvas-mount {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 3D Viewport Overlays */
+.viewport-overlay-dock {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.viewport-top-controls {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.viewport-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(14, 19, 28, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 7px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 11.5px;
+  color: #f1f5f9;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.viewport-camera-btns {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(14, 19, 28, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 4px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.camera-btn {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 11.5px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.camera-btn:hover {
+  color: #ffffff;
+}
+
+.camera-btn.active {
+  background: #1e2636;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.viewport-bottom-legend {
+  pointer-events: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  background: rgba(11, 14, 20, 0.9);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11.5px;
+}
+
+.station-legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+/* --------------------------------------------------------------------------
+   High-Density Agent Workstation Control Pods (7 Desks Grid)
+   -------------------------------------------------------------------------- */
+.desks-grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .desks-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .desks-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1536px) {
+  .desks-grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.desk-card-v2 {
+  position: relative;
+  background-color: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.desk-card-v2:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.desk-card-v2.active-selected {
+  outline: 2px solid var(--brand-amber);
+  background-color: var(--bg-surface-hover);
+}
+
+/* Orchestrator double-wide */
+@media (min-width: 768px) {
+  .desk-card-v2.desk-orchestrator-wide {
+    grid-column: span 2;
+  }
+}
+
+.desk-v2-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.puppy-avatar-box {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-surface-0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.desk-card-v2:hover .puppy-avatar-box {
+  transform: scale(1.05);
+}
+
+.desk-v2-directive-box {
+  background-color: var(--bg-surface-0);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-3);
+}
+
+.directive-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 3px;
+}
+
+.directive-body-text {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.station-telemetry-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  text-align: center;
+  background-color: var(--bg-surface-2);
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+}
+
+.telemetry-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.telemetry-cell-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.telemetry-cell-value {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Deep Telemetry Inspector Panel (Interactive for Selected Desk)
+   -------------------------------------------------------------------------- */
+.deep-inspector-panel {
+  background-color: var(--bg-surface-1);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.inspector-header-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 1024px) {
+  .inspector-header-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.inspector-agent-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.inspector-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-amber);
+}
+
+.inspector-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding-top: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+  .inspector-grid-layout {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+.react-reasoning-stream {
+  background-color: var(--bg-surface-0);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.reasoning-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.reasoning-badge {
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  font-size: 10.5px;
+}
+
+.reasoning-badge.thought { background: var(--brand-amber-dim); color: var(--brand-amber); }
+.reasoning-badge.action { background: var(--brand-sky-dim); color: var(--brand-sky); }
+.reasoning-badge.observe { background: var(--brand-emerald-dim); color: var(--brand-emerald); }
+
+.reasoning-text {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.safeguard-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-surface-2);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-subtle);
+}
+
+.sparkline-container {
+  background-color: var(--bg-surface-0);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;
+}

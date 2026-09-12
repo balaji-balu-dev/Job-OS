@@ -1,0 +1,179 @@
+/* ==========================================================================
+   JobOS Design Tokens (tokens.css) — Recreated via ui-ux-design-pro
+   Direction: Warmth & Approachability meets Precision & Authority
+   ========================================================================== */
+
+@layer tokens, reset, base, components, utilities;
+
+@layer tokens {
+  /* ------------------------------------------------------------------------
+     1. DEFAULT THEME: Light Mode (Daylight Executive Studio / Parchment & Ink)
+     ------------------------------------------------------------------------ */
+  :root {
+    color-scheme: light dark;
+
+    /* Base Typography */
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* Zinc Neutral Scale (Tailwind 4 & shadcn parity) */
+    --bg-0: #09090b;
+    --bg-100: #18181b;
+    --bg-200: #27272a;
+    --bg-300: #3f3f46;
+    --text-100: #fafafa;
+    --text-200: #e4e4e7;
+    --text-300: #a1a1aa;
+    --text-400: #71717a;
+
+    /* Oklch Primitive Primitives */
+    --primitive-parchment-base: oklch(0.985 0.005 60);
+    --primitive-parchment-raised: #ffffff;
+    --primitive-parchment-overlay: oklch(0.995 0.002 60);
+    --primitive-parchment-inset: oklch(0.965 0.008 60);
+    --primitive-parchment-active: oklch(0.94 0.01 60);
+
+    --primitive-ink-primary: oklch(0.18 0.015 250);
+    --primitive-ink-secondary: oklch(0.42 0.015 250);
+    --primitive-ink-muted: oklch(0.58 0.01 250);
+    --primitive-ink-disabled: oklch(0.72 0.008 250);
+
+    /* Brand & Accents */
+    --brand-amber: oklch(0.74 0.16 75);
+    --brand-amber-dim: oklch(0.74 0.16 75 / 0.12);
+    --brand-indigo: oklch(0.52 0.20 270);
+    --brand-indigo-dim: oklch(0.52 0.20 270 / 0.12);
+    --brand-emerald: oklch(0.62 0.16 155);
+    --brand-emerald-dim: oklch(0.62 0.16 155 / 0.12);
+    --brand-rose: oklch(0.58 0.22 25);
+    --brand-rose-dim: oklch(0.58 0.22 25 / 0.12);
+    --brand-sky: oklch(0.62 0.16 230);
+    --brand-sky-dim: oklch(0.62 0.16 230 / 0.12);
+
+    /* Semantic Surface Tokens (Light Mode) */
+    --bg-canvas: var(--primitive-parchment-base);
+    --bg-surface-0: oklch(0.975 0.005 60);
+    --bg-surface-1: var(--primitive-parchment-raised);
+    --bg-surface-2: var(--primitive-parchment-overlay);
+    --bg-surface-3: var(--primitive-parchment-inset);
+    --bg-surface-hover: oklch(0.95 0.008 60);
+    --bg-surface-active: var(--primitive-parchment-active);
+
+    /* Borders & Hairlines */
+    --border-subtle: oklch(0 0 0 / 0.06);
+    --border-medium: oklch(0 0 0 / 0.10);
+    --border-strong: oklch(0 0 0 / 0.18);
+    --border-focus: var(--brand-indigo);
+
+    /* Typography Colors */
+    --text-primary: var(--primitive-ink-primary);
+    --text-secondary: var(--primitive-ink-secondary);
+    --text-muted: var(--primitive-ink-muted);
+    --text-disabled: var(--primitive-ink-disabled);
+    --text-inverse: #ffffff;
+
+    /* Agent Identity Color System */
+    --agent-orch: oklch(0.52 0.20 270);     /* Chief - Indigo */
+    --agent-scout: oklch(0.58 0.16 210);    /* Tracker - Cyan */
+    --agent-intel: oklch(0.72 0.16 75);     /* Sage - Amber */
+    --agent-app: oklch(0.62 0.16 155);      /* Quill - Emerald */
+    --agent-track: oklch(0.55 0.18 250);    /* Radar - Blue */
+    --agent-email: oklch(0.65 0.18 45);     /* Courier - Warm Terracotta */
+    --agent-verify: oklch(0.60 0.20 340);   /* Sentry - Ruby Pink */
+
+    /* Audit & Provenance Status Colors */
+    --status-verified: oklch(0.55 0.16 155);
+    --status-verified-bg: oklch(0.62 0.16 155 / 0.10);
+    --status-verified-border: oklch(0.62 0.16 155 / 0.30);
+
+    --status-derived: oklch(0.52 0.16 230);
+    --status-derived-bg: oklch(0.62 0.16 230 / 0.10);
+    --status-derived-border: oklch(0.62 0.16 230 / 0.30);
+
+    --status-needs-review: oklch(0.65 0.16 75);
+    --status-needs-review-bg: oklch(0.72 0.16 75 / 0.12);
+    --status-needs-review-border: oklch(0.72 0.16 75 / 0.35);
+
+    --status-unknown: oklch(0.55 0.01 250);
+    --status-unknown-bg: oklch(0 0 0 / 0.05);
+    --status-unknown-border: oklch(0 0 0 / 0.12);
+
+    /* Multi-Layer Shadows (Layered Strategy) */
+    --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.04), 0 0 0 1px var(--border-subtle);
+    --shadow-md: 0 3px 8px oklch(0 0 0 / 0.06), 0 1px 3px oklch(0 0 0 / 0.04), 0 0 0 1px var(--border-subtle);
+    --shadow-lg: 0 10px 24px oklch(0 0 0 / 0.08), 0 3px 8px oklch(0 0 0 / 0.04), 0 0 0 1px var(--border-medium);
+    --shadow-drawer: -6px 0 28px oklch(0 0 0 / 0.12);
+    --shadow-glow-amber: 0 0 16px oklch(0.74 0.16 75 / 0.25);
+    --shadow-glow-indigo: 0 0 16px oklch(0.52 0.20 270 / 0.25);
+    --shadow-glow-emerald: 0 0 16px oklch(0.62 0.16 155 / 0.25);
+
+    /* Spacing Scale (4px / 8px Base) */
+    --space-1: 0.25rem;  /* 4px */
+    --space-2: 0.5rem;   /* 8px */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-5: 1.25rem;  /* 20px */
+    --space-6: 1.5rem;   /* 24px */
+    --space-8: 2rem;     /* 32px */
+    --space-10: 2.5rem;  /* 40px */
+    --space-12: 3rem;    /* 48px */
+
+    /* Radii */
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Dimensions */
+    --sidebar-width: 252px;
+    --topbar-height: 56px;
+    --drawer-width: 440px;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ------------------------------------------------------------------------
+     2. DARK THEME OVERRIDES: Obsidian & Slate Night Mode
+     ------------------------------------------------------------------------ */
+  :root[data-theme="dark"] {
+    --bg-canvas: #090c10;
+    --bg-surface-0: #0f131a;
+    --bg-surface-1: #151a24;
+    --bg-surface-2: #1b2230;
+    --bg-surface-3: #222b3d;
+    --bg-surface-hover: #29344a;
+    --bg-surface-active: #313e57;
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.14);
+    --border-strong: rgba(255, 255, 255, 0.22);
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-disabled: #475569;
+    --text-inverse: #090c10;
+
+    --status-verified: #34d399;
+    --status-verified-bg: rgba(16, 185, 129, 0.14);
+    --status-verified-border: rgba(16, 185, 129, 0.35);
+
+    --status-derived: #38bdf8;
+    --status-derived-bg: rgba(14, 165, 233, 0.14);
+    --status-derived-border: rgba(14, 165, 233, 0.35);
+
+    --status-needs-review: #fbbf24;
+    --status-needs-review-bg: rgba(245, 158, 11, 0.14);
+    --status-needs-review-border: rgba(245, 158, 11, 0.40);
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    --shadow-drawer: -8px 0 32px rgba(0, 0, 0, 0.75);
+  }
+}
